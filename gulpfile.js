@@ -9,6 +9,7 @@
     gulp.task('css', function(){
         return gulp.src('./development/sass/style.scss')
         .pipe(sass({
+          outputStyle:'compressed',
           includePaths: [dir.bootstrapsass + '/assets/stylesheets'],
         }))
       .pipe(gulp.dest(dir.production + '/css'));
