@@ -6,6 +6,7 @@
 
 //Inicjalizacija direktorija
     var dir = {
+      temp: 'development/temp', //dir za temp
       bootstrapsass: '././bower_components/bootstrap-sass', //dir gdje se nalazi bootstrap sass
       production: '././production', //dir za produkciju
     };
@@ -27,20 +28,14 @@ gulp.task('fonts', function(){
   .pipe(gulp.dest(dir.production + '/fonts'));
 });
 
-//pg-custom ---> _custom.scss
+//BROJ DVA
+//pg-custom.css ---> custom.scss
 gulp.task('customcss', function(){
-  return gulp.src('production/css/pg-custom.css')
-  .pipe(rename('_custom.css'))
+   gulp.src(dir.production + '/css/pg-custom.css')
   .pipe(cssscss())
   .pipe(gulp.dest('development/sass/'));
 
 });
-gulp.task('customcssrename', function(){
-  gulp.src('development/sass/pg-custom.scss')
-  .pipe(rename('_custom.scss'))
-.pipe(gulp.dest('development/sass/'));
-
-});
 
 //defalut task za pokretanje gulp-a
-gulp.task('default', ['css', 'fonts']);
+gulp.task('default', ['customcss', 'css', 'fonts']);
