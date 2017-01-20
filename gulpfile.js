@@ -1,6 +1,8 @@
     //Inicjalizacija gulp.js i ostalih pluginova
-    var gulp = require('gulp');
-    var sass = require('gulp-sass');
+    var gulp = require('gulp'),
+        sass = require('gulp-sass'),
+        cssscss = require('gulp-css-scss'),
+        rename = require('gulp-rename');
 
 //Inicjalizacija direktorija
     var dir = {
@@ -25,6 +27,20 @@ gulp.task('fonts', function(){
   .pipe(gulp.dest(dir.production + '/fonts'));
 });
 
+//pg-custom ---> _custom.scss
+gulp.task('customcss', function(){
+  return gulp.src('production/css/pg-custom.css')
+  .pipe(rename('_custom.css'))
+  .pipe(cssscss())
+  .pipe(gulp.dest('development/sass/'));
+
+});
+gulp.task('customcssrename', function(){
+  gulp.src('development/sass/pg-custom.scss')
+  .pipe(rename('_custom.scss'))
+.pipe(gulp.dest('development/sass/'));
+
+});
 
 //defalut task za pokretanje gulp-a
 gulp.task('default', ['css', 'fonts']);
