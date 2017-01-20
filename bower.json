@@ -1,0 +1,17 @@
+{
+  "name": "vedranhibler2017",
+  "description": "Workflow",
+  "main": "index.js",
+  "authors": [
+    "Vedran Hibler"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/wecohr/vedranhibler2017",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
