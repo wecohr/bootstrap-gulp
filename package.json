@@ -1,0 +1,19 @@
+{
+  "name": "vedranhibler2017",
+  "version": "1.0.0",
+  "description": "Workflow",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wecohr/vedranhibler2017.git"
+  },
+  "author": "Vedran Hibler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wecohr/vedranhibler2017/issues"
+  },
+  "homepage": "https://github.com/wecohr/vedranhibler2017#readme"
+}
