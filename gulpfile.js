@@ -11,7 +11,7 @@
 
 //gulp task za stvaranje css-a iz sass-a
     gulp.task('css', function(){
-        return gulp.src('./development/sass/style.scss') //??
+        return gulp.src('./development/sass/style.scss') //temeljni scss gdje se sve kompajlira
         .pipe(sass({
           outputStyle:'compressed', //kompresiran css
           includePaths: [dir.bootstrapsass + '/assets/stylesheets'], //ucitava default stylesheets
@@ -24,6 +24,7 @@ gulp.task('fonts', function(){
   return gulp.src(dir.bootstrapsass + '/assets/fonts/**/*')
   .pipe(gulp.dest(dir.production + '/fonts'));
 });
+
 
 //defalut task za pokretanje gulp-a
 gulp.task('default', ['css', 'fonts']);
