@@ -2,6 +2,8 @@
     var gulp = require('gulp'),
         sass = require('gulp-sass'),
         cssscss = require('gulp-css-scss'),
+        concat = require ('gulp-concat'),
+        uglify = require ('gulp-uglify'),
         rename = require('gulp-rename');
 //------------------------------------------------------------------------------------------------------------------------------>
 
@@ -46,9 +48,38 @@ gulp.task('fonts', function(){
 });
 //------------------------------------------------------------------------------------------------------------------------------>
 
+//-------------------------------------JavaScript Minify/Uglify----------------------------------------------------------------->
+
+gulp.task('js', function () {
+
+  gulp.src(dir.development + '/js/jquery.min.js')
+  .pipe(concat('javascript.js'))
+  .pipe(uglify())
+  .pipe(gulp.dest(dir.production + '/js'));
+
+  gulp.src(dir.development + '/js/bootstrap.min.js')
+  .pipe(concat('bootstrap.js'))
+  .pipe(uglify())
+  .pipe(gulp.dest(dir.production + '/js'));
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------------------------------------------------------>
 
 //-------------------------------------------------WATCH TASK--------------------------------------------------------------------->
 gulp.task('watch', function () {
+  gulp.watch(dir.development + '/js/*.js', ['js']); //prati sve javascript fileove u development/js i pokrece js funkciju za stvaranje js fileova
   gulp.watch(dir.development + '/css/*.css', ['css']); //prati sve promjene u development/css i pokreće css funkciju za stvaranje style.css
 });
 //------------------------------------------------------------------------------------------------------------------------------>
