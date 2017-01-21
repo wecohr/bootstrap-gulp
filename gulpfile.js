@@ -4,6 +4,7 @@
         cssscss = require('gulp-css-scss'),
         concat = require ('gulp-concat'),
         uglify = require ('gulp-uglify'),
+        browserSync = require ('browser-sync').create(),
         rename = require('gulp-rename');
 //------------------------------------------------------------------------------------------------------------------------------>
 
@@ -13,6 +14,17 @@
       bootstrapsass: '././bower_components/bootstrap-sass', //dir gdje se nalazi bootstrap sass
       production: '././production', //dir za produkciju
     };
+//------------------------------------------------------------------------------------------------------------------------------>
+
+//------------------------------------------BROWSER-SYNC------------------------------------------------------------------------>
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./development"
+        }
+    });
+});
+
 //------------------------------------------------------------------------------------------------------------------------------>
 
 //--------------------------------------------SASS/CSS-------------------------------------------------------------------------->
@@ -51,7 +63,6 @@ gulp.task('fonts', function(){
 //-------------------------------------JavaScript Minify/Uglify----------------------------------------------------------------->
 
 gulp.task('js', function () {
-
   gulp.src(dir.development + '/js/jquery.min.js')
   .pipe(concat('javascript.js'))
   .pipe(uglify())
@@ -63,23 +74,16 @@ gulp.task('js', function () {
   .pipe(gulp.dest(dir.production + '/js'));
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
 //------------------------------------------------------------------------------------------------------------------------------>
+
+
+
 
 //-------------------------------------------------WATCH TASK--------------------------------------------------------------------->
 gulp.task('watch', function () {
-  gulp.watch(dir.development + '/js/*.js', ['js']); //prati sve javascript fileove u development/js i pokrece js funkciju za stvaranje js fileova
-  gulp.watch(dir.development + '/css/*.css', ['css']); //prati sve promjene u development/css i pokreće css funkciju za stvaranje style.css
+  gulp.watch(dir.development + '/js/*.js', ['js']).on('change', browserSync.reload); //prati sve javascript fileove u development/js i pokrece js funkciju za stvaranje js fileova
+  gulp.watch(dir.development + '/css/*.css', ['css']).on('change', browserSync.reload); //prati sve promjene u development/css i pokreće css funkciju za stvaranje style.css
+  gulp.watch(dir.development + '*.html').on('change', browserSync.reload);
 });
 //------------------------------------------------------------------------------------------------------------------------------>
+gulp.task('default', ['js', 'css', 'fonts', 'browser-sync', 'watch']);
