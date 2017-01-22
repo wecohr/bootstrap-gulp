@@ -1,5 +1,5 @@
 # GULP.JS - BOOTSTRAP
-## Bootstrap projekt implementiran kroz bower, gulp.
+## Bootstrap projekt implementiran kroz Gulp.js, Bower.
 
 Implementirano SCSS->CSS, JS minify, Browser-Sync
 
