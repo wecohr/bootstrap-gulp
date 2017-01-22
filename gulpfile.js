@@ -76,6 +76,10 @@ gulp.task('js', function () {
 
 //------------------------------------------------------------------------------------------------------------------------------>
 
+gulp.task('html', function(){
+  gulp.src(dir.development + '/*.html')
+  .pipe()
+});
 
 
 
@@ -83,7 +87,7 @@ gulp.task('js', function () {
 gulp.task('watch', function () {
   gulp.watch(dir.development + '/js/*.js', ['js']).on('change', browserSync.reload); //prati sve javascript fileove u development/js i pokrece js funkciju za stvaranje js fileova
   gulp.watch(dir.development + '/css/*.css', ['css']).on('change', browserSync.reload); //prati sve promjene u development/css i pokreće css funkciju za stvaranje style.css
-  gulp.watch(dir.development + '*.html').on('change', browserSync.reload);
+  gulp.watch(dir.development + '/*.html', ['html']).on('change', browserSync.reload);
 });
 //------------------------------------------------------------------------------------------------------------------------------>
 gulp.task('default', ['js', 'css', 'fonts', 'browser-sync', 'watch']);
