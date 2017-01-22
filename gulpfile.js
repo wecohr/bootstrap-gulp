@@ -78,7 +78,7 @@ gulp.task('js', function () {
 
 gulp.task('html', function(){
   gulp.src(dir.development + '/*.html')
-  .pipe()
+  .pipe(gulp.dest(dir.development));
 });
 
 
